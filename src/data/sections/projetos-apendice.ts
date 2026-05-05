@@ -19,9 +19,8 @@ sudo eselect profile set default/linux/amd64/23.0/hardened
 # Reconstrua o sistema base após mudar de profile (demora horas):
 sudo emerge --ask --emptytree --usepkg=n @world` },
       { lang: "ini", code: `# /etc/portage/package.use/lemp
-# Nginx com SSL, http2 e suporte a PHP via FastCGI.
-www-servers/nginx NGINX_MODULES_HTTP: ssl http_v2 stub_status realip
-www-servers/nginx SSL_BACKEND: openssl
+# Nginx com SSL, HTTP/2 e módulos extras (USE_EXPAND NGINX_MODULES_HTTP_*).
+www-servers/nginx ssl http2 nginx_modules_http_stub_status nginx_modules_http_realip
 
 # PHP com FPM, PostgreSQL e extensões web comuns.
 dev-lang/php fpm pdo postgres curl gd intl mysql opcache sockets xml zip

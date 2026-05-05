@@ -31,11 +31,13 @@ Would you like to merge these packages? [Yes/No]` },
       { lang: "bash", code: `# Para apenas SIMULAR (não instala), use --pretend (-p):
 emerge --pretend app-editors/vim
 
-# Para forçar reinstalação:
-sudo emerge --ask --oneshot app-editors/vim
+# Para forçar recompilação (ignora se já está instalado na mesma versão):
+sudo emerge --ask --usepkg=n --oneshot app-editors/vim
 
-# Para desinstalar (cuidado, --depclean é mais seguro depois):
-sudo emerge --ask --deselect app-editors/vim` },
+# Para desinstalar de verdade:
+sudo emerge --ask --unmerge app-editors/vim
+# (alternativa: emerge --depclean depois de --deselect, é mais seguro pois
+#  só remove se nada mais depender)` },
       { lang: "bash", code: `# Atualizando o sistema inteiro (a 'oração' do gentooísta):
 sudo emerge --ask --update --deep --newuse @world
 # Forma curta equivalente: sudo emerge -auDN @world` },
